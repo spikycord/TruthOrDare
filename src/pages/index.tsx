@@ -1,16 +1,21 @@
 import Head from "next/head";
-import { Fire, Gear, UserList, Wrench } from "@phosphor-icons/react";
+import { Gear, UserList } from "@phosphor-icons/react";
 import RerollButton from "@/components/RerollButton";
 import SettingButton from "@/components/SettingButton";
-import SettingChip from "@/components/SettingChip";
+import Chip from "@/components/Chip";
 import { useState } from "react";
-import SettingModal from "@/components/Modals/SettingModal";
-import GameSetting from "@/components/Modals/GameSetting";
+import GameSetting, { type Setting } from "@/components/Modals/GameSetting";
 import AddPlayer from "@/components/Modals/AddPlayer";
 
 export default function Home() {
   const [openGameSetting, setOpenGameSetting] = useState(false);
   const [openAddPlayer, setOpenAddPlayer] = useState(false);
+
+  const [setting, setSetting] = useState<Setting>({
+    mode: "PG-13",
+    gameSetting: "Truth or Dare",
+  });
+  const [playerList, setPlayerList] = useState<string[]>([]);
 
   return (
     <>
@@ -23,12 +28,16 @@ export default function Home() {
         <div className="flex h-full w-full justify-center bg-primary p-2">
           <GameSetting
             setModal={setOpenGameSetting}
+            setting={setting}
+            setSetting={setSetting}
             className={`transition-gpu duration-500 ${
               openGameSetting ? " scale-100" : "scale-0"
             }`}
           />
           <AddPlayer
             setModal={() => setOpenAddPlayer(false)}
+            playerList={playerList}
+            setPlayerList={setPlayerList}
             className={`transition-gpu duration-500 ${
               openAddPlayer ? " scale-100" : "scale-0"
             }`}
@@ -54,8 +63,8 @@ export default function Home() {
               />
             </div>
             <div className="flex w-full gap-2 text-[10px] text-white">
-              <SettingChip content="DARE" />
-              <SettingChip content="PG" />
+              <Chip content="DARE" />
+              <Chip content="PG" />
             </div>
             <div className="w-full text-[18px] text-white">
               Post your favorite photo on your phone
