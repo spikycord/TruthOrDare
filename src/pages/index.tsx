@@ -1,7 +1,17 @@
 import Head from "next/head";
-import { DiceSix, Gear, UserList } from "@phosphor-icons/react";
+import { Fire, Gear, UserList, Wrench } from "@phosphor-icons/react";
+import RerollButton from "@/components/RerollButton";
+import SettingButton from "@/components/SettingButton";
+import SettingChip from "@/components/SettingChip";
+import { useState } from "react";
+import SettingModal from "@/components/Modals/SettingModal";
+import GameSetting from "@/components/Modals/GameSetting";
+import AddPlayer from "@/components/Modals/AddPlayer";
 
 export default function Home() {
+  const [openGameSetting, setOpenGameSetting] = useState(false);
+  const [openAddPlayer, setOpenAddPlayer] = useState(false);
+
   return (
     <>
       <Head>
@@ -9,37 +19,48 @@ export default function Home() {
         <meta name="description" content="Truth Or Dare App" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex h-[100vh] w-[100vw] justify-center bg-[#030712]">
-        <div className="flex h-full w-[600px] flex-col items-center justify-center gap-4">
-          <div className="text-4xl font-semibold text-white">Truth or Dare</div>
-          <div className="flex gap-2 text-sm text-white">
-            <div className="rounded-lg border border-slate-700 bg-black px-2 py-1 text-white hover:bg-slate-800">
-              <div className="flex flex-row items-center gap-1">
-                <Gear size={18} color="#fafafa" weight="duotone" />
-                <div>Game Settings</div>
-              </div>
+      <div className="relative h-[100vh] w-[100vw]">
+        <div className="flex h-full w-full justify-center bg-primary p-2">
+          <GameSetting
+            setModal={setOpenGameSetting}
+            className={`transition-gpu duration-500 ${
+              openGameSetting ? " scale-100" : "scale-0"
+            }`}
+          />
+          <AddPlayer
+            setModal={() => setOpenAddPlayer(false)}
+            className={`transition-gpu duration-500 ${
+              openAddPlayer ? " scale-100" : "scale-0"
+            }`}
+          />
+          <div
+            className={`flex h-full w-[600px] flex-col items-center justify-center gap-4 ${
+              openGameSetting || openAddPlayer ? "blur-sm" : ""
+            }`}
+          >
+            <div className="text-4xl font-semibold text-white">
+              Truth or Dare
             </div>
-            <div className="rounded-lg border border-slate-700 bg-black px-2 py-1 text-white hover:bg-slate-800">
-              <div className="flex flex-row items-center gap-1">
-                <UserList size={18} color="#fafafa" weight="duotone" />
-                <div>Add Players</div>
-              </div>
+            <div className="flex gap-2 text-sm text-white">
+              <SettingButton
+                Icon={Gear}
+                content="Game Setting"
+                onClick={() => setOpenGameSetting(true)}
+              />
+              <SettingButton
+                Icon={UserList}
+                content="Add Players"
+                onClick={() => setOpenAddPlayer(true)}
+              />
             </div>
-          </div>
-          <div className="flex w-full gap-2 text-[10px] text-white">
-            <div className="rounded-lg bg-[#7234d6] px-2 py-[2px] text-white hover:bg-[#6225c5]">
-              DARE
+            <div className="flex w-full gap-2 text-[10px] text-white">
+              <SettingChip content="DARE" />
+              <SettingChip content="PG" />
             </div>
-            <div className="rounded-lg bg-[#7234d6] px-2 py-[2px] text-white hover:bg-[#6225c5]">
-              PG
+            <div className="w-full text-[18px] text-white">
+              Post your favorite photo on your phone
             </div>
-          </div>
-          <div className="w-full text-[18px] text-white">
-            Post your favorite photo on your phone
-          </div>
-          <div className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-[#7234d6] py-2 text-sm text-white hover:bg-[#6225c5]">
-            <DiceSix size={24} color="#fafafa" weight="duotone" />
-            <div>Reroll Question</div>
+            <RerollButton />
           </div>
         </div>
       </div>
