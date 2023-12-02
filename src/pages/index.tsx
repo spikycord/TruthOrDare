@@ -70,8 +70,8 @@ export default function Home() {
               />
             </div>
             <div className="flex w-full gap-2 text-[10px] text-white">
-              <Chip content={setting.gameSetting} />
-              <Chip content={setting.mode} />
+              <Chip content={setting.gameSetting.toUpperCase()} />
+              <Chip content={setting.mode.toUpperCase()} />
             </div>
             <div className="w-full text-[18px] text-white">
               {quote ? quote : "No quote"}
