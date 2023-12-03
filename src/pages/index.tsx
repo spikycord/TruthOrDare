@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { Gear, UserList } from "@phosphor-icons/react";
-import RerollButton from "@/components/RerollButton";
+import RerollQuestionButton from "@/components/RerollQuestionButton";
 import SettingButton from "@/components/SettingButton";
 import Chip from "@/components/Chip";
 import { useEffect, useState } from "react";
 import GameSetting, { type Setting } from "@/components/Modals/GameSetting";
 import AddPlayer from "@/components/Modals/AddPlayer";
+import RerollPlayerButton from "@/components/RerollPlayerButton";
 
 export default function Home() {
   const [openGameSetting, setOpenGameSetting] = useState(false);
@@ -16,8 +17,8 @@ export default function Home() {
     gameSetting: "Truth or Dare",
   });
   const [playerList, setPlayerList] = useState<string[]>([]);
-
   const [quote, setQuote] = useState("");
+  const [playerSelected, setPlayerSelected] = useState<string>("");
 
   useEffect(() => {
     const quote = getRandomQuote(setting);
@@ -55,7 +56,9 @@ export default function Home() {
             }`}
           >
             <div className="text-4xl font-semibold text-white">
-              Truth or Dare
+              {playerSelected === ""
+                ? "Truth or Dare"
+                : `${playerSelected}'s Turn`}
             </div>
             <div className="flex gap-2 text-sm text-white">
               <SettingButton
@@ -76,9 +79,47 @@ export default function Home() {
             <div className="w-full text-[18px] text-white">
               {quote ? quote : "No quote"}
             </div>
-            <RerollButton
-              onClick={() => setQuote(getRandomQuote(setting) ?? "")}
-            />
+            <div className="mt-6 flex w-full flex-col gap-4">
+              <RerollQuestionButton
+                content={
+                  playerList.length === 0
+                    ? "Reroll Question"
+                    : "Reroll Question with Player"
+                }
+                onClick={
+                  playerList.length === 0
+                    ? () => setQuote(getRandomQuote(setting) ?? "")
+                    : () => {
+                        const player =
+                          playerList[
+                            Math.floor(Math.random() * playerList.length)
+                          ];
+                        setPlayerSelected(player ?? "");
+                        setQuote(getRandomQuote(setting) ?? "");
+                      }
+                }
+              />
+              {playerList.length > 0 && (
+                <div className="flex w-full gap-4">
+                  <RerollPlayerButton
+                    content="Reroll Question"
+                    onClick={() => setQuote(getRandomQuote(setting) ?? "")}
+                  />
+
+                  <RerollPlayerButton
+                    content="Reroll Player"
+                    onClick={() => {
+                      const player =
+                        playerList[
+                          Math.floor(Math.random() * playerList.length)
+                        ];
+                      console.log(player);
+                      setPlayerSelected(player ?? "");
+                    }}
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
