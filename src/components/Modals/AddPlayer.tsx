@@ -21,7 +21,7 @@ const AddPlayer: React.FC<Props> = ({
   return (
     <SettingModal
       clickClose={() => setModal(false)}
-      className={className + " h-fit w-[512px]"}
+      className={className + " h-fit max-h-[90vh] w-[512px] max-w-[90vw]"}
     >
       <div className="relative flex h-full flex-col gap-3 p-6 text-white">
         <div className="absolute bottom-6 right-6 flex items-center justify-center gap-2 rounded-lg bg-gray-700 px-4 py-2 text-sm text-white hover:bg-gray-800">
@@ -35,7 +35,7 @@ const AddPlayer: React.FC<Props> = ({
         </div>
         <div className="flex w-full items-center justify-center gap-4">
           <input
-            className=" flex-[2] rounded-lg border border-slate-700 bg-black px-4 py-2 text-sm text-white hover:bg-slate-800"
+            className="w-[50%] rounded-lg border border-slate-700 bg-black px-4 py-2 text-sm text-white hover:bg-slate-800 sm:w-auto sm:flex-[2]"
             placeholder="enter a name"
             value={playerName}
             onChange={(e) => setPlayerName(e.target.value)}

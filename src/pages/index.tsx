@@ -30,10 +30,10 @@ export default function Home() {
       <Head>
         <title>Truth or Dare</title>
         <meta name="description" content="Truth Or Dare App" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
       <div className="relative h-[100vh] w-[100vw]">
-        <div className="flex h-full w-full justify-center bg-primary p-2">
+        <div className="flex h-full w-full justify-center bg-primary p-2 px-4">
           <GameSetting
             setModal={setOpenGameSetting}
             setting={setting}
@@ -51,9 +51,9 @@ export default function Home() {
             }`}
           />
           <div
-            className={`flex h-full w-[600px] flex-col items-center justify-center gap-4 ${
+            className={`flex h-full w-[600px] flex-col items-center justify-center sm:gap-4 ${
               openGameSetting || openAddPlayer ? "blur-sm" : ""
-            }`}
+            }  gap-6`}
           >
             <div className="text-4xl font-semibold text-white">
               {playerSelected === ""

@@ -26,7 +26,7 @@ const GameSetting: React.FC<Props> = ({
   return (
     <SettingModal
       clickClose={() => setModal(false)}
-      className={className + " h-[432px] w-[512px] "}
+      className={className + " h-[432px] max-h-[90vh] w-[512px] max-w-[90vw]"}
     >
       <div className="relative flex h-full flex-col gap-3 p-6 text-white">
         <div
