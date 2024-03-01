@@ -10,7 +10,7 @@ type Props = {
   setSetting: React.Dispatch<React.SetStateAction<Setting>>;
 };
 
-type ModeSetting = "PG" | "PG-13" | "R" | "GAY";
+type ModeSetting = "PG" | "PG-13" | "R" | "FAGGOT";
 type GameSetting = "Truth or Dare" | "Truth" | "Dare";
 export type Setting = {
   mode: ModeSetting;
@@ -113,12 +113,12 @@ const GameSetting: React.FC<Props> = ({
           }}
         />
         <Choice
-          content="GAY"
-          checked={setting.mode === "GAY"}
+          content="FAGGOT"
+          checked={setting.mode === "FAGGOT"}
           onClick={() => {
             setSetting({
               ...setting,
-              mode: "GAY",
+              mode: "FAGGOT",
             });
           }}
         />

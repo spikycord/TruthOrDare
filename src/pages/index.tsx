@@ -133,13 +133,13 @@ function getRandomQuote(setting: Setting) {
       PG: TruthPG,
       "PG-13": TruthPG13,
       R: TruthR,
-      GAY: TruthGAY,
+      FAGGOT: TruthFAGGOT,
     },
     Dare: {
       PG: DarePG,
       "PG-13": DarePG13,
       R: DareR,
-      GAY: DareGAY,
+      FAGGOT: DareFAGGOT,
     },
   };
 
@@ -935,10 +935,10 @@ Do you sleep naked?
 What is the next thing you have on your to-buy list?
 If you had to delete one app from your phone, which one would it be?
 `;
-const TruthGAYText = `
-Have you ever fucked  in public
+const TruthFAGGOTText = `
+Have you ever fucked in public
 `;
-const DareGAYText = `
+const DareFAGGOTText = `
 show your dick to the whole vC
 Show the vc your last porn link
 `;
@@ -1181,5 +1181,5 @@ const DarePG = DarePGText.split("\n");
 const TruthPG = TruthPGText.split("\n");
 const DareR = DareRText.split("\n");
 const TruthR = TruthRText.split("\n");
-const TruthGAY = TruthGAYText.split("\n");
-const DareGAY = DareGAYText.split("\n");
+const TruthFAGGOT = TruthFAGGOTText.split("\n");
+const DareFAGGOT = DareFAGGOTText.split("\n");
