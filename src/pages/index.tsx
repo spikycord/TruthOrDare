@@ -133,11 +133,13 @@ function getRandomQuote(setting: Setting) {
       PG: TruthPG,
       "PG-13": TruthPG13,
       R: TruthR,
+      GAY: TruthGAY,
     },
     Dare: {
       PG: DarePG,
       "PG-13": DarePG13,
       R: DareR,
+      GAY: DareGAY,
     },
   };
 
@@ -933,6 +935,13 @@ Do you sleep naked?
 What is the next thing you have on your to-buy list?
 If you had to delete one app from your phone, which one would it be?
 `;
+const TruthGAYText = `
+Have you ever fucked  in public
+`;
+const DareGAYText = `
+show your dick to the whole vC
+Show the vc your last porn link
+`;
 
 const DareRText = `Attempt to turn the other players on using only sounds.
 Out of the first three people in the member list, pick one to Fuck, one to Marry, and one to Kill.
@@ -1172,3 +1181,5 @@ const DarePG = DarePGText.split("\n");
 const TruthPG = TruthPGText.split("\n");
 const DareR = DareRText.split("\n");
 const TruthR = TruthRText.split("\n");
+const TruthGAY = TruthGAYText.split("\n");
+const DareGAY = DareGAYText.split("\n");
