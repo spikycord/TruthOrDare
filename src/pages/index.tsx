@@ -134,12 +134,14 @@ function getRandomQuote(setting: Setting) {
       "PG-13": TruthPG13,
       R: TruthR,
       FAGGOT: TruthFAGGOT,
+      ISLANDBOYS: TruthISLANDBOYS,
     },
     Dare: {
       PG: DarePG,
       "PG-13": DarePG13,
       R: DareR,
       FAGGOT: DareFAGGOT,
+      ISLANDBOYS: DareISLANDBOYS,
     },
   };
 
@@ -991,6 +993,12 @@ Pick one person in the group, and try to convince them to kiss you for 2 minutes
 Announce who you think is the sexiest member here, online or not.
 Send a dirty text to your ex.
 `;
+const TruthISLANDBOYSText = `
+Have you ever fucked in public
+`;
+const DareISLANDBOYSText = `
+CALL RED
+`;
 
 const TruthRText = `Have you ever tried ecstasy?
 Have you ever taken it in the butt or would you?
@@ -1183,3 +1191,5 @@ const DareR = DareRText.split("\n");
 const TruthR = TruthRText.split("\n");
 const TruthFAGGOT = TruthFAGGOTText.split("\n");
 const DareFAGGOT = DareFAGGOTText.split("\n");
+const TruthISLANDBOYS = TruthISLANDBOYSText.split("\n");
+const DareISLANDBOYS = DareISLANDBOYSText.split("\n");
